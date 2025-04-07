@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineWeb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">🎬 Bienvenido a CineWeb 🎬</h1>
+
+        <!-- 🔐 Controles de administrador -->
+        {{admin_controls}}
+
+        <!-- 🔍 Búsqueda y Filtro -->
+        <form method="get" action="/" class="row g-3 mb-4">
+            <div class="col-md-6">
+                <input type="text" name="search" value="{{search}}" minlength="3" maxlength="35" class="form-control" placeholder="Buscar película...">
+            </div>
+            <div class="col-md-4">
+                <select name="genre" class="form-select">
+                    <option value="Todos" {{'selected' if genre == 'Todos' else ''}}>Todos los géneros</option>
+                    <option value="Acción" {{'selected' if genre == 'Acción' else ''}}>Acción</option>
+                    <option value="Ciencia Ficción" {{'selected' if genre == 'Ciencia Ficción' else ''}}>Ciencia Ficción</option>
+                    <option value="Romance" {{'selected' if genre == 'Romance' else ''}}>Romance</option>
+                    <option value="Comedia" {{'selected' if genre == 'Comedia' else ''}}>Comedia</option>
+                    <option value="Aventura" {{'selected' if genre == 'Aventura' else ''}}>Aventura</option>
+                    <!-- Agrega más géneros si lo deseas -->
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+        </form>
+
+        <!-- 🎥 Contenedor de películas -->
+        <div class="row" id="moviesContainer">
+            {{movies}}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
