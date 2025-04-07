@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copia el archivo de requerimientos y lo instala
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r pepe/requirements.txt
 
 # Copia el resto de la aplicación (app.py, server.conf, start.sh, templates, static, etc.)
 COPY . .
