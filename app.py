@@ -249,6 +249,9 @@ class CineApp:
         
 # SERVIDOR
 if __name__ == "__main__":
+    # Cargar configuración del servidor
+    cherrypy.config.update("server.conf")
+    
     cherrypy.quickstart(CineApp(), "/", {
         "/": {
             "tools.sessions.on": True,
@@ -257,6 +260,5 @@ if __name__ == "__main__":
         "/static": {
             "tools.staticdir.on": True,
             "tools.staticdir.dir": "static"
-            
         }
     })
